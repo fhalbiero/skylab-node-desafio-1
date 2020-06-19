@@ -50,13 +50,17 @@ app.put('/repositories/:id', (req, res) => {
     const { index } = req.params;
     const { title, url, techs } = req.body;
 
+    const {id, likes} = repositories[index];
+
     const repository = {
+        id,
         title,
         url,
-        techs
+        techs,
+        likes
     }
 
-    repositories[index] = {...repositories[index], ...repository};
+    repositories[index] = repository;
 
     return res.status(200).send();
 })
